@@ -116,8 +116,8 @@ minioUrl: "http://{{ .Release.Name }}-minio:9000"
 
 keycloak:
   oauth2:
-    clientId: <path:traceability-foss/data/dev/keycloak/#oauth2-client-id>
-    clientSecret: <path:traceability-foss/data/dev/keycloak/#oauth2-client-secret>
+    clientId: <path:traceability-irs/data/dev/keycloak/#oauth2-client-id>
+    clientSecret: <path:traceability-irs/data/dev/keycloak/#oauth2-client-secret>
     clientTokenUri: https://centralidp.dev.cofinity-x.com/auth/realms/CX-Central/protocol/openid-connect/token
     jwkSetUri: https://centralidp.dev.cofinity-x.com/auth/realms/CX-Central/protocol/openid-connect/certs
 
