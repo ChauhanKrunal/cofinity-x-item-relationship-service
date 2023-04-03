@@ -110,9 +110,9 @@ bpdm:
   bpnEndpoint: >-
     {{ tpl (.Values.bpdm.url | default "") . }}/api/catena/legal-entities/{partnerId}?idType={idType}
 
-minioUser: "minio"  # <minio-username>
-minioPassword:  # <minio-password>
-minioUrl: "http://{{ .Release.Name }}-minio:9000"
+minioUser: "<path:traceability-irs/data/dev/minio/#minio-user>"  # <minio-username>
+minioPassword:  "<path:traceability-irs/data/dev/minio/#minio-password>"
+minioUrl: "http://product-traceability-irs-minio:9000"
 
 keycloak:
   oauth2:
@@ -133,7 +133,24 @@ config:
 # Minio Configuration #
 #######################
 minio:
-  enabled: false
+  enabled: true
+  mode: standalone
+  persistence:
+    storageClass: "standard-ssd-lrs-retain"
+    size: 2Gi
+  resources:
+    limits:
+      cpu: 400m
+      memory: 2Gi
+    requests:
+      cpu: 200m
+      memory: 1Gi
+  nameOverride: "product-traceability-irs-minio"
+  fullnameOverride: "product-traceability-irs-minio"
+  serviceAccount:
+    create: false
+  rootUser: <path:traceability-irs/data/dev/minio/#minio-user>  # <minio-username>
+  rootPassword: <path:traceability-irs/data/dev/minio/#minio-password>  # <minio-password>
 
 ############################
 # Prometheus Configuration #
