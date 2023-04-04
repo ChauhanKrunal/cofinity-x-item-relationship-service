@@ -92,7 +92,7 @@ digitalTwinRegistry:
   shellLookupEndpoint: >-
     {{ tpl (.Values.digitalTwinRegistry.url | default "") . }}/lookup/shells?assetIds={assetIds}
 semanticshub:
-  url:  https://semantic-hub.dev.cofinity-x.com/semantics
+  url:  https://semantic-hub.dev.cofinity-x.com/semantics/hub/api/v1/models
   pageSize: "100"  # Number of aspect models to retrieve per page
   modelJsonSchemaEndpoint: >-
     {{- if .Values.semanticshub.url }}
